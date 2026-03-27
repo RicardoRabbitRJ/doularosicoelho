@@ -1,12 +1,13 @@
 /* ROOT VARIABLES */
 :root {
-    --primary-color: #D3927D; /* Soft warm terracotta */
-    --primary-dark: #B57763;
-    --secondary-color: #E8D9C8; /* Soft beige/sand */
-    --text-dark: #2F3B40; /* Deep sage gray */
-    --text-light: #5A6A70;
-    --bg-main: #FAF7F2; /* Cream white */
+    --primary-color: #fe4365;
+    --primary-dark: #d13753;
+    --secondary-color: #83af9b;
+    --text-dark: #2c3631;
+    --text-light: #5e736a;
+    --bg-main: #f9cdad;
     --bg-white: #FFFFFF;
+    --bg-alt: #c8c8a9;
     --font-heading: 'Lora', serif;
     --font-body: 'Montserrat', sans-serif;
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -69,8 +70,8 @@ p {
 
 .badge {
     display: inline-block;
-    background: rgba(211, 146, 125, 0.15);
-    color: var(--primary-dark);
+    background: rgba(254, 67, 101, 0.15);
+    color: var(--primary-color);
     padding: 8px 18px;
     border-radius: 50px;
     font-size: 0.875rem;
@@ -110,7 +111,7 @@ p {
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(211, 146, 125, 0.25);
+    box-shadow: 0 10px 20px rgba(254, 67, 101, 0.25);
 }
 
 .btn-secondary {
@@ -147,7 +148,7 @@ p {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(250, 247, 242, 0.85);
+    background: rgba(249, 205, 173, 0.85);
     backdrop-filter: blur(12px);
     z-index: 1000;
     transition: var(--transition);
@@ -205,40 +206,53 @@ p {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: radial-gradient(circle at top right, #FFFFFF, var(--bg-main));
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(249, 205, 173, 0.85) 0%, rgba(255, 255, 255, 0.7) 100%);
+    z-index: 2;
 }
 
 .hero-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-content h1, .hero-content p {
+    color: var(--text-dark);
 }
 
 .hero-buttons {
     display: flex;
     gap: 16px;
     margin-top: 40px;
-}
-
-.hero-image {
-    position: relative;
-    border-radius: 20px 20px 100px 20px;
-    overflow: hidden;
-    box-shadow: 0 24px 48px rgba(0,0,0,0.06);
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transform: scale(1.05);
-    transition: transform 1.5s ease;
-}
-
-.hero-image:hover img {
-    transform: scale(1.0);
+    justify-content: center;
 }
 
 /* ABOUT SECTION */
@@ -355,7 +369,7 @@ p {
 /* TESTIMONIALS */
 .testimonials {
     padding: 120px 0;
-    background-color: var(--bg-white);
+    background-color: #fc9d9a;
 }
 
 .testimonial-slider {
@@ -365,7 +379,7 @@ p {
 }
 
 .testimonial-card {
-    background: var(--bg-main);
+    background: var(--bg-white);
     padding: 50px 40px;
     border-radius: 20px 100px 20px 20px;
     position: relative;
@@ -418,7 +432,7 @@ p {
 /* CTA SECTION */
 .cta-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #F0E6D8 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--bg-alt) 0%, var(--secondary-color) 100%);
     text-align: center;
 }
 
@@ -437,7 +451,7 @@ p {
 
 /* FOOTER */
 .footer {
-    background: #1C2326;
+    background: #202b26;
     color: var(--bg-white);
     padding: 80px 0 0;
 }
@@ -542,7 +556,7 @@ p {
 
 /* RESPONSIVE */
 @media (max-width: 992px) {
-    .hero-container, .about-container {
+    .about-container {
         grid-template-columns: 1fr;
         gap: 60px;
     }
@@ -550,7 +564,6 @@ p {
     .hero { padding-top: 140px; text-align: center; }
     .hero-buttons { justify-content: center; }
     
-    .hero-image { order: -1; }
     .about-image { order: -1; }
     
     .footer-container { grid-template-columns: 1fr 1fr; }
